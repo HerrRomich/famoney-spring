@@ -1,61 +1,31 @@
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build dev",
       "type": "shell",
-      "command": ".\\node_modules\\.bin\\ng",
-      "windows": {
-        "command": ".\\node_modules\\.bin\\ng"
-      },
-      "args": ["build", "--configuration=development", "--watch"],
+      "command": "npm",
+      "args": ["run", "ng", "--", "build", "--configuration=production", "--watch=true"],
       "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared",
-        "showReuseMessage": true
-      },
-      "problemMatcher": ["$tsc-watch"]
+      "problemMatcher": ["$tsc"],
+      "label": "npm: build:prod",
+      "detail": "ng build:prod"
     },
     {
-      "label": "build prod",
-      "type": "shell",
-      "command": "ng",
-      "windows": {
-        "command": ".\\node_modules\\.bin\\ng"
-      },
-      "args": ["build", "--configuration=production", "--watch"],
+      "type": "npm",
+      "script": "start",
       "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared",
-        "showReuseMessage": true
-      },
-      "problemMatcher": ["$tsc-watch"]
+      "problemMatcher": ["$tsc"],
+      "label": "npm: start",
+      "detail": "ng serve"
     },
     {
-      "label": "serve",
       "type": "shell",
-      "command": ".\\node_modules\\.bin\\ng",
-      "windows": {
-        "command": ".\\node_modules\\.bin\\ng"
-      },
-      "args": ["serve"],
+      "command": "npm",
+      "args": ["run", "ng", "--", "build", "--configuration=development", "--watch=true"],
       "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared",
-        "showReuseMessage": true
-      },
-      "problemMatcher": ["$tsc-watch"]
+      "problemMatcher": ["$tsc"],
+      "label": "npm: build:dev",
+      "detail": "ng build:dev"
     }
   ]
 }

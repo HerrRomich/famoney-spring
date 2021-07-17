@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 .mat-icon-button.small-button {
   height: 20px;
   width: 20px;
@@ -38,7 +39,7 @@
 }
 
 .fm-entry-item-highlighted {
-  background-color: mat-color($fm-app-accent, 50, 0.45);
+  background-color: mat.get-color-from-palette($fm-app-accent, 50, 0.45);
 }
 
 div.positive-amount {

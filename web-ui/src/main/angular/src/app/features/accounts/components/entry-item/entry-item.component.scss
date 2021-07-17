@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import 'styles';
 
 mat-optgroup.mat-optgroup.fm-optgroup-sticky {
@@ -31,7 +32,7 @@ mat-form-field.fm-number-input {
 }
 
 mark {
-  background-color: mat-color($fm-app-accent, 300);
+  background-color: mat.get-color-from-palette($fm-app-accent, 300);
 }
 
 .fm-expense-category {

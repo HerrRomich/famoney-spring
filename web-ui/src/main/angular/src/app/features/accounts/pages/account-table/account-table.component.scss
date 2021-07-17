@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 @import 'styles';
 @import '../../../../shared/utils/animation/ghost-animation.scss';
@@ -14,7 +15,7 @@ mat-list.movements-list {
 }
 
 .account-entry:hover {
-  background-color: mat-color($fm-app-accent, 50);
+  background-color: mat.get-color-from-palette($fm-app-accent, 50);
   font-weight: 600;
   cursor: pointer;
   button.account-entry-action {

@@ -1,19 +1,20 @@
+@use '~@angular/material' as mat;
 @import '~@angular/cdk/_overlay';
 @import '~@angular/material/_theming';
 @import './styles/form-field-inf-width';
 @import './styles/thin-toggle-button';
-@include mat-core();
+@include mat.core();
 
-$fm-app-primary: mat-palette($mat-amber);
-$fm-app-accent: mat-palette($mat-blue-gray);
-$fm-app-warn: mat-palette($mat-deep-orange);
+$fm-app-primary: mat.define-palette(mat.$amber-palette);
+$fm-app-accent: mat.define-palette(mat.$blue-gray-palette);
+$fm-app-warn: mat.define-palette(mat.$deep-orange-palette);
 
-$my-app-theme: mat-light-theme($fm-app-primary, $fm-app-accent, $fm-app-warn);
+$my-app-theme: mat.define-light-theme($fm-app-primary, $fm-app-accent, $fm-app-warn);
 
 $fm-expense-color: #FF0000;
 $fm-income-color: #007F00;
 
-@include angular-material-theme($my-app-theme);
+@include mat.all-component-themes($my-app-theme);
 
 .wrapped-tooltip {
   white-space: pre-line;
