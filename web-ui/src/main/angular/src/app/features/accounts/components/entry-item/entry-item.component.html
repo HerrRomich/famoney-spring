@@ -1,0 +1,56 @@
+<div fxLayout="column" flex [formGroup]="formGroup" fxLayoutGap="12px" *ngIf="entryCategories$ | async as entryCategories" >
+  <div matLine fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="12px">
+    <mat-form-field fxFlex="80" floatLabel="always">
+      <mat-label translate="accounts.entryItem.fields.category.title"></mat-label>
+      <input
+        matInput
+        [placeholder]="'accounts.entryItem.fields.category.placeholder' | translate"
+        [matAutocomplete]="categoryAutocomplete"
+        formControlName="categoryId"
+        required
+      />
+      <mat-error>{{ getCategoryErrorMessage$() | async }}</mat-error>
+      <mat-hint>{{ getCategoryPath$() | async }}</mat-hint>
+      <mat-autocomplete #categoryAutocomplete [displayWith]="getCategoryName(entryCategories.flatEntryCategories)">
+        <mat-optgroup
+          [label]="'accounts.entryItem.fields.category.dropdown.group.income' | translate"
+          class="fm-optgroup-sticky"
+        >
+          <mat-option
+            *ngFor="let category of entryCategories.incomes"
+            [value]="category.id"
+            [style.padding-left]="16 + category.level * 16 + 'px'"
+            ><span [innerHtml]="category.optionName"></span>
+          </mat-option>
+        </mat-optgroup>
+        <mat-optgroup
+          [label]="'accounts.entryItem.fields.category.dropdown.group.expense' | translate"
+          class="fm-optgroup-sticky"
+        >
+          <mat-option
+            *ngFor="let category of entryCategories.expenses"
+            [value]="category.id"
+            [style.padding-left]="16 + category.level * 16 + 'px'"
+            ><span [innerHtml]="category.optionName"></span>
+          </mat-option>
+        </mat-optgroup>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field fxFlex="20" floatLabel="always" class="fm-number-input">
+      <mat-label translate="accounts.entryItem.fields.amount.title"></mat-label>
+      <input
+        type="text"
+        matInput
+        autocomplete="off"
+        formControlName="amount"
+        required
+        [ngClass]="getEntryItemClass$() | async"
+      />
+      <mat-error>{{ getAmountErrorMessage$() | async }}</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-form-field matLine floatLabel="always">
+    <mat-label translate="accounts.entryItem.fields.comments.title"></mat-label>
+    <input matInput autocomplete="off" formControlName="comments" />
+  </mat-form-field>
+</div>

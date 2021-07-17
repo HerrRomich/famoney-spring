@@ -1,0 +1,137 @@
+{
+  "main": {
+    "header": "Бюджет",
+    "toolbar": {
+      "accounts": "Счета",
+      "budget": "Бюджет",
+      "calendar": "Календарь",
+      "reports": "Отчеты"
+    }
+  },
+  "accounts": {
+    "table": {
+      "menu": {
+        "newAccount": {
+          "title": "Новый счет"
+        },
+        "accountProperties": {
+          "title": "Свойства"
+        },
+        "deleteAccount": {
+          "title": "Удалить"
+        }
+      },
+      "columns": {
+        "entryDate": {
+          "name": "Дата записи"
+        },
+        "comments": {
+          "name": "Комментарий"
+        },
+        "category": {
+          "name": "Категория"
+        },
+        "amount": {
+          "name": "Сумма"
+        },
+        "balance": {
+          "name": "Остаток"
+        }
+      },
+      "buttons": {
+        "addEntry": {
+          "tooltip": "Добавить доход/расход"
+        },
+        "addTransfer": {
+          "tooltip": "Добавить перевод"
+        },
+        "addRefund": {
+          "tooltip": "Добавить возврат"
+        }
+      },
+      "element": {
+        "menu": {
+          "move": {
+            "title": "перенести"
+          },
+          "change": {
+            "title": "изменить"
+          },
+          "delete": {
+            "title": "удалить"
+          }
+        }
+      },
+      "errors": {
+        "noAccount": "Кошелек не выбран!"
+      }
+    },
+    "tagPopup": {
+      "placeholder": "Тэги",
+      "buttons": {
+        "clearAll": {
+          "tooltip": "Очистить все тэги"
+        }
+      }
+    },
+    "entryDialog": {
+      "title": "Доход/Расход",
+      "fields": {
+        "entryDate": {
+          "title": "Дата записи",
+          "errors": {
+            "invalid": "Ошибка формата!",
+            "required": "Обязательное поле!"
+          }
+        },
+        "bookingDate": {
+          "title": "Дата учета"
+        },
+        "bookingMonth": {
+          "title": "Учетный месяц"
+        }
+      },
+      "buttons": {
+        "cancel": {
+          "title": "Отменить"
+        },
+        "save": {
+          "title": "Сохранить"
+        }
+      }
+    },
+    "entryItem": {
+      "fields": {
+        "category": {
+          "title": "Категория",
+          "placeholder": "<выберите категорию>",
+          "dropdown": {
+            "group": {
+              "income": "Доходы",
+              "expense": "Расходы"
+            }
+          },
+          "errors": {
+            "required": "Категория не выбрана!"
+          }
+        },
+        "amount": {
+          "title": "Сумма",
+          "errors": {
+            "required": "Значение!",
+            "wrongFormat": "Формат!",
+            "zeroValue": "Значение 0!"
+          }
+        },
+        "comments": {
+          "title": "Комментарий"
+        }
+      }
+    }
+  },
+  "notifications": {
+    "title": {
+      "error": "Ошибка"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+server:
+  port: 9000
+  http2:
+    enabled: true
+  ssl:    key-store: classpath:keystore.jks
+    key-store-password: welcome1
+    key-password: welcome1

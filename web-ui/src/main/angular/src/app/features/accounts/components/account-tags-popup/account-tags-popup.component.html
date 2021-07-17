@@ -1,0 +1,37 @@
+<mat-form-field fxFlex class="fm-form-field-inf-width">
+  <mat-chip-list #accountTagList fxFlex>
+    <mat-chip
+      *ngFor="let tag of accountsService.selectedAccountTags$ | async"
+      [selectable]="true"
+      [removable]="true"
+      (removed)="removeTag(tag)"
+    >
+      {{ tag }}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input
+      matInput
+      #tagsInput
+      [placeholder]="'accounts.tagPopup.placeholder' | translate"
+      [formControl]="tagsCtrl"
+      [matAutocomplete]="tagAutoComplete"
+      [matChipInputFor]="accountTagList"
+      [matChipInputAddOnBlur]="true"
+      (matChipInputTokenEnd)="addTag($event)"
+    />
+    <mat-autocomplete #tagAutoComplete="matAutocomplete" (optionSelected)="selectTag($event)">
+      <mat-option *ngFor="let tag of filtersAccountTags$ | async" [value]="tag">
+        {{ tag }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-chip-list>
+  <button
+    mat-button
+    mat-icon-button
+    matSuffix
+    (click)="accountsService.clearSelectedTags()"
+    [matTooltip]="'accounts.tagPopup.buttons.clearAll.tooltip' | translate"
+  >
+    <mat-icon>cancel</mat-icon>
+  </button>
+</mat-form-field>

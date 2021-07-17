@@ -1,0 +1,13 @@
+:host {
+  flex-direction: column;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.accounts-tab-group {
+  min-width: 0px;
+}
+
+.transparent-backdrop {
+  color: rgba($color: #000000, $alpha: 0);
+}

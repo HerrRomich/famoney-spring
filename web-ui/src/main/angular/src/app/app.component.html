@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" fxLayout="column">
+  <mat-toolbar-row fxLayout="row" ngClass.lt-sm="hide-span">
+    <span translate="main.header"></span>
+    <div fxFlex></div>
+    <button mat-button routerLink="/accounts" routerLinkActive="mat-raised-button">
+      <mat-icon>account_balance_wallet</mat-icon>
+      <span translate="main.toolbar.accounts"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>account_balance</mat-icon>
+      <span translate="main.toolbar.budget"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>date_range</mat-icon>
+      <span translate="main.toolbar.calendar"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>pie_chart</mat-icon>
+      <span translate="main.toolbar.reports"></span>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div fxFlex fxLayout="column">
+  <router-outlet></router-outlet>
+</div>
+<simple-notifications></simple-notifications>

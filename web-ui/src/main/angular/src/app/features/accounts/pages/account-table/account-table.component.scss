@@ -1,0 +1,86 @@
+@import '~@angular/material/theming';
+@import 'styles';
+@import '../../../../shared/utils/animation/ghost-animation.scss';
+
+:host {
+  position: relative;
+  flex-direction: column;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+mat-list.movements-list {
+  padding-top: 0;
+}
+
+.account-entry:hover {
+  background-color: mat-color($fm-app-accent, 50);
+  font-weight: 600;
+  cursor: pointer;
+  button.account-entry-action {
+    display: block;
+  }
+}
+
+.account-entry {
+  button.account-entry-action {
+    display: none;
+  }
+}
+
+.account-entry-data {
+  height: 100%;
+}
+
+.account-entry-data-loading {
+  div {
+    background-color: rgba(235, 235, 235, 0.514);
+    border-bottom: 2px solid white;
+    border-radius: 4px 4px 4px 4px;
+    @include animate-ghost-line;
+  }
+}
+
+mat-list-item.mat-focus-indicator.account-entry-header {
+  position: sticky;
+  top: 0;
+  font-weight: 700;
+  z-index: 1;
+  background-color: rgba(#ffffff, 1);
+}
+
+mat-list-item {
+  &.account-entry-header,
+  &.account-entry {
+    div.fixed-width {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  > div.mat-list-item-content {
+    padding: 12px 0 0 0;
+  }
+}
+
+div.positive-amount {
+  color: $fm-income-color;
+}
+
+div.negative-amount {
+  color: $fm-expense-color;
+}
+
+eco-fab-speed-dial {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+}
+
+eco-fab-speed-dial-trigger.hidden:hover {
+  opacity: 1;
+}
+
+eco-fab-speed-dial-trigger.hidden:not(:hover) {
+  opacity: 0.45;
+}

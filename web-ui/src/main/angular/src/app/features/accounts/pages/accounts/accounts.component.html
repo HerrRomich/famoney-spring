@@ -1,0 +1,35 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+  <button
+    mat-icon-button
+    (click)="openAccountTagsPopup()"
+    cdkOverlayOrigin
+    #accountTagsPopupButton="cdkOverlayOrigin"
+    matTooltip="{{ getAccountTags() }}"
+    matTooltipClass="wrapped-tooltip"
+  >
+    <mat-icon matBadge="{{ getAccountTagsCount() }}" [matBadgeHidden]="getAccountTagsCount() === 0"
+      >filter_list</mat-icon
+    >
+  </button>
+  <div fxFlex></div>
+  <fm-router-tab fxFlex="0 1 auto" class="accounts-tab-group">
+    <fm-router-tab-item
+      *ngFor="let account of accounts$ | async"
+      [routerLink]="account.id"
+      routerLinkActive
+      #rlaRef="routerLinkActive"
+      label="{{ account.name }}"
+    ></fm-router-tab-item>
+  </fm-router-tab>
+  <button mat-icon-button [matMenuTriggerFor]="menuRef">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menuRef="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item translate="accounts.table.menu.newAccount.title"></button>
+    <button mat-menu-item translate="accounts.table.menu.accountProperties.title"></button>
+    <button mat-menu-item translate="accounts.table.menu.deleteAccount.title"></button>
+  </mat-menu>
+</div>
+<div fxLayout="column" fxFlex>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,28 @@
+.fm-narrow-toggle-button {
+  button.mat-button-toggle-button {
+    font-size: 14px;
+  }
+  button.mat-button-toggle-button > span.mat-button-toggle-label-content {
+    padding: 0;
+  }
+  .mat-icon {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+  }
+}
+
+.fm-thin-toggle-button {
+  width: 100%;
+  button.mat-button-toggle-button > .mat-button-toggle-label-content {
+    line-height: 14px;
+  }
+  .mat-button-toggle-button {
+    font-size: 14px;
+  }
+  .mat-icon {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+  }
+}

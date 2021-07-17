@@ -1,0 +1,50 @@
+.mat-icon-button.small-button {
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  .mat-icon {
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+
+.entry-container {
+  position: relative;
+}
+
+.entry-item-list {
+  padding: 2px;
+  overflow-y: scroll;
+  font-size: 14px;
+  max-height: 404px;
+}
+
+.fm-add-entry-item-button {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  opacity: 0.45;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@import 'styles';
+
+.entry-item {
+  padding: 4px;
+}
+
+.fm-entry-item-highlighted {
+  background-color: mat-color($fm-app-accent, 50, 0.45);
+}
+
+div.positive-amount {
+  color: $fm-income-color;
+}
+
+div.negative-amount {
+  color: $fm-expense-color;
+}

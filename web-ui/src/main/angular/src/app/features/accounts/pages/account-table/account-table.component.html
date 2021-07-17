@@ -1,0 +1,102 @@
+<eco-fab-speed-dial
+  [fixed]="true"
+  [open]="false"
+  (mouseenter)="triggerSpeedDial()"
+  (mouseleave)="stopSpeedDial()"
+  #fabSpeedDial
+>
+  <eco-fab-speed-dial-trigger [className]="fabSpeedDialActions.miniFabVisible ? 'shown' : 'hidden'">
+    <button mat-fab (click)="addEntry()" [matTooltip]="'accounts.table.buttons.addEntry.tooltip' | translate">
+      <mat-icon>add</mat-icon>
+    </button>
+  </eco-fab-speed-dial-trigger>
+  <eco-fab-speed-dial-actions #fabSpeedDialActions>
+    <button
+      mat-mini-fab
+      [matTooltip]="'accounts.table.buttons.addTransfer.tooltip' | translate"
+      (click)="addTransfer()"
+    >
+      <mat-icon>swap_horiz</mat-icon>
+    </button>
+    <button mat-mini-fab [matTooltip]="'accounts.table.buttons.addRefund.tooltip' | translate" (click)="addRefund()">
+      <mat-icon>redo</mat-icon>
+    </button>
+  </eco-fab-speed-dial-actions>
+</eco-fab-speed-dial>
+<cdk-virtual-scroll-viewport fxLayout="column" fxFlex #virtualScrollViewport>
+  <mat-list class="movements-list" dense>
+    <mat-list-item class="account-entry-header" [style.top]="inverseTranslation">
+      <div fxLayout="row" fxLayoutAlign="start start" fxFlex fxLayoutGap="4px">
+        <div fxFlex="80px" translate="accounts.table.columns.entryDate.name" class="fixed-width"></div>
+        <div fxFlex="40%" translate="accounts.table.columns.comments.name" class="fixed-width"></div>
+        <div fxFlex translate="accounts.table.columns.category.name"></div>
+        <div fxFlex="0 0 100px" fxLayoutAlign="end center" translate="accounts.table.columns.amount.name"></div>
+        <div fxFlex="0 0 100px" fxLayoutAlign="end center" translate="accounts.table.columns.balance.name"></div>
+      </div>
+      <div fxFlex="0 0 40px" fxLayoutAlign="end center"></div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    <ng-container *cdkVirtualFor="let movement of movementDataSource; let last = last">
+      <mat-list-item class="account-entry">
+        <div *ngIf="!movement" fxLayout="row" fxLayoutAlign="center start" fxFlex fxLayoutGap="4px" class="account-entry-data-loading">
+          <div fxFlex="80px" fxLayoutAlign="start center" class="fixed-width">&nbsp;</div>
+          <div fxFlex="40%" fxLayoutAlign="start center" class="fixed-width">&nbsp;</div>
+          <div fxFlex fxLayoutAlign="start center" class="fixed-width">&nbsp;</div>
+          <div fxFlex="0 0 100px" fxLayoutAlign="end center" class="fixed-width">&nbsp;</div>
+          <div fxFlex="0 0 100px" fxLayoutAlign="end center" class="fixed-width">&nbsp;</div>
+        </div>
+        <div
+          *ngIf="movement"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxFlex
+          fxLayoutGap="4px"
+          (click)="edit(movement)"
+          class="account-entry-data"
+        >
+          <div fxFlex="80px" fxLayoutAlign="start center" class="fixed-width">
+            {{ movement?.data?.date | date: 'dd.MM.yyyy' }}
+          </div>
+          <div fxFlex="40%" fxLayoutAlign="start center" class="fixed-width">{{ getMovementComments(movement) }}</div>
+          <div fxFlex fxLayoutAlign="start center" class="fixed-width">
+            {{ getMovementCategoryPath$(movement) | async }}
+          </div>
+          <div
+            fxFlex="0 0 100px"
+            fxLayoutAlign="end center"
+            [ngClass]="movement?.data?.amount > 0 ? 'positive-amount' : 'negative-amount'"
+            class="fixed-width"
+          >
+            {{ movement?.data?.amount | number: '1.2-2' }}
+          </div>
+          <div
+            fxFlex="0 0 100px"
+            fxLayoutAlign="end center"
+            [ngClass]="movement?.total > 0 ? 'positive-amount' : 'negative-amount'"
+            class="fixed-width"
+          >
+            {{ movement?.total | number: '1.2-2' }}
+          </div>
+        </div>
+        <div fxFlex="0 0 40px" fxLayoutAlign="end center">
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menuRef"
+            [matMenuTriggerData]="{ movement: movement }"
+            class="account-entry-action"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
+</cdk-virtual-scroll-viewport>
+<mat-menu #menuRef="matMenu" [overlapTrigger]="false">
+  <ng-template matMenuContent let-movement="movement">
+    <button mat-menu-item translate="accounts.table.element.menu.change.title" (click)="edit(movement)"></button>
+    <button mat-menu-item translate="accounts.table.element.menu.move.title"></button>
+    <button mat-menu-item translate="accounts.table.element.menu.delete.title"></button>
+  </ng-template>
+</mat-menu>

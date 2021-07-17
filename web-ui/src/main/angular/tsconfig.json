@@ -1,0 +1,37 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "paths": {
+      "@famoney-apis/*": [
+        "src/app/shared/apis/*"
+      ],
+      "@famoney-shared/*": [
+        "src/app/shared/*"
+      ],
+      "@famoney-features/*": [
+        "src/app/features/*"
+      ],
+    },
+    "sourceMap": true,
+    "declaration": false,
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2015",
+    "strict": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "ESNext",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true
+  }
+}

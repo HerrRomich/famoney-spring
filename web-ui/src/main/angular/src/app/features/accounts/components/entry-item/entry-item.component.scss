@@ -1,0 +1,43 @@
+@import 'styles';
+
+mat-optgroup.mat-optgroup.fm-optgroup-sticky {
+  label.mat-optgroup-label {
+    padding: 0 8px;
+    line-height: 32px;
+    height: 32px;
+    font-weight: 700;
+    background-color: rgba($color: white, $alpha: 1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+}
+
+mat-form-field.fm-number-input {
+  input.mat-input-element,
+  label.mat-form-field-label,
+  mat-error {
+    text-align: right;
+  }
+  input.mat-input-element {
+    text-align: right;
+    -moz-appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+mark {
+  background-color: mat-color($fm-app-accent, 300);
+}
+
+.fm-expense-category {
+  color: rgba($fm-expense-color, 0.87);
+}
+
+.fm-income-category {
+  color: rgba($fm-income-color, 0.87);
+}
